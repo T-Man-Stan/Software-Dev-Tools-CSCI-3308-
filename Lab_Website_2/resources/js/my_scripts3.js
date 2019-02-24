@@ -15,8 +15,6 @@ var players = [{name:"John Doe", img: "../resources/img/player1.jpg", alt:"Image
 				{name:"James Smith", img: "../resources/img/player2.jpg", alt:"Image of Player 2", year:"Junior", major:"Science", games_played: 17, pass_yards: 192, rushing_yards: 102, receiving_yards: 344},
 				{name:"Samuel Phillips", img: "../resources/img/player3.jpg", alt:"Image of Player 3", year:"Freshman", major:"Math", games_played: 8, pass_yards: 35, rushing_yards: 70, receiving_yards: 98},
 				{name:"Robert Myers", img: "../resources/img/player4.jpg", alt:"Image of Player 4", year:"Senior", major:"Computer Science", games_played: 31, pass_yards: 802, rushing_yards: 375, receiving_yards: 128}];
-
-
 /*
 	Registration Page:
 		viewStudentStats(id, toggle) method
@@ -25,7 +23,6 @@ var players = [{name:"John Doe", img: "../resources/img/player1.jpg", alt:"Image
 				toggle -
 					0 - hide the html tag
 					1 - make the html tag visible
-
 			purpose: This method will accept the id of an html tag and a toggle value.
 					 The method will then set the html tag's css visibility and height.
 					 To hide the html tag (toggle - 0), the visibility will be set to hidden and
@@ -48,13 +45,11 @@ function viewStudentStats(id, toggle){
 		console.log(visible)
 	}
 }
-
 /*
 	Home Page:
 		changeColor(color) method
 			parameter:
 				color- A css color
-
 			purpose: This method will set the html body's background color to the
 					 provided parameter.
 */
@@ -62,35 +57,27 @@ function changeColor(color){
 	console.log(color);
 	document.body.style.background = color;
 }
-
 /*
 	Football Season Stats Page:
 		loadStatsPage method:
 			parameters: none
-
 			purpose: This method will iterate through the stats table and
 					 do the following:
 						1. Read through each row of the table & determine which team won
 						   the game.
-
 						2. Update the winner column to the name of the winning team.
-
 						3. Keep track of the number of wins/losses for the Buffs.
-
 						4. Update the second table to show the total number of wins/losses for the Buffs.
 */
 function loadStatsPage(){
 		var table = document.getElementById("stats_table");//Retrieve our table element; should we pass in stats_table here??
 		ctr = 0
 		ctrl = 0
-
 		   for (var i = 2, row; row = table.rows[i]; i++) {
 		   //iterate through rows
 		   //rows would be accessed using the "row" variable assigned in the for loop
-
 			    //iterate through columns
 			    //columns would be accessed using the "col" variable assigned in the for loop
-
 			    //need to convert inputs from row/collumn into number, then commpare numnbers
 				//how can I index cell vlaues/colums to do the comparison??
 				home_value = table.rows[i].cells[2].innerHTML;//Read in a cells current value
@@ -110,14 +97,11 @@ function loadStatsPage(){
 		}
 		document.getElementById("wins").innerHTML = ctr;
 		document.getElementById("losses").innerHTML = ctrl;
-
 }
-
 /*
 	Football Player Information Page
 		loadPlayersPage method:
-			parameters: none
-
+			parameters: none\
 			purpose: This method will populate the dropdown menu to allow the
 					 user to select which player's information to view.
 
@@ -155,12 +139,9 @@ function loadStatsPage(){
 					  avg_r_yards   - the average number of rushing yards for the player's Buff career
 					  avg_rec_yards - the average number of receiving yards for the player's Buff career
 */
-
 function switchPlayers(playerNum){
 	//var found = false;
 	var i = playerNum;
-	//len2 = 4
-	//for(i = 0; i < len2; i++){
 
 	//document.getElementById(p_year).innerHTML = players[i].year;
 
@@ -174,48 +155,49 @@ function switchPlayers(playerNum){
 
 	//document.getElementById(g_played).innerHTML = players[i].games_played;
 
-  var gplayed = document.getElementById("g_played");
+  var gplayed = documentElementById("g_played");
 	gplayed.innerHTML = String(players[i].games_played);
 
 	//document.getElementById(player_img).src = players[i].img;
 
-  var playerimg = document.getElementById("player_img");
-	playerimg.src = players[i].img;
+  var playerimg = documentElementById("player_img");
+	playerimg.img = players[i].img;
 
 	//document.getElementById(player_img).alt = players[i].alt;
   //insert inner html here?
-  var playeralt = document.getElementById("player_img");
-	playeralt.innerHTML  = players[i].alt;
+  var playeralt = documentElementByID("player_img");
+	playeralt.alt = players[i].alt;
 
 	//document.getElementById(p_yards).innerHTML = players[i].pass_yards;
 
-  var pyard = document.getElementById("p_yards");
-	pyard.innerHTML = players[i].pass_yards;
+  var pyard = documentElementByID("p_yards");
+	pyard.innerHTML = String(players[i].pass_yards);
 
 	//document.getElementById(r_yards).innerHTML = players[i].rushing_yards;
 
-  var ryards = document.getElementById("r_yards");
-	ryards.innerHTML = players[i].rushing_yards;
+  var ryards = documentElementByID("r_yards");
+	ryards.r_yards = players[i].rushing_yards;
 
 	//document.getElementById(rec_yards).innerHTML = players[i].receiving_yards;
 
-	var recyards = document.getElementById("rec_yards");
-	recyards.innerHTML = players[i].receiving_yards;
+	var recyards = documentElementByID("rec_yards");
+	recyards.receiving_yards = players[i].receiving_yards;
 
 	//document.getElementById(avg_p_yards).innerHTML = players[i].pass_yards/players[i].games_played;
 
-  var avgpyards = document.getElementById("avg_p_yards");
-	avgpyards.innerHTML = Math.round(players[i].pass_yards/players[i].games_played);
+  var avgpyards = documentElementByID("avg_p_yards");
+	avgpyards.avg_p_yards = parseInt(players[i].pass_yards/players[i].games_played);
 
 	//document.getElementById(avg_r_yards).innerHTML = players[i].rushing_yards/players[i].games_played;
 
-  var avgryards = document.getElementById("avg_r_yards");
-	avgryards.innerHTML = Math.round(players[i].rushing_yards/players[i].games_played);
+  var avgryards = documentElementByID("avg_r_yards");
+	avgryards.avg_r_yards = parseInt(players[i].rushing_yards/players[i].games_played);
+
 
 	//document.getElementById(avg_rec_yards).innerHTML = players[i].rec_yards/players[i].games_played;
 
-	var avgrec = document.getElementById("avg_rec_yards");
-	avgrec.innerHTML = Math.round(players[i].receiving_yards/players[i].games_played);
+	var avgrec = documentElementById("avg_rec_yards");
+	avgrec.avg_rec_yards = parseInt(players[i].rec_yards/players[i].games_played);
 }
 
 function loadPlayersPage(){
@@ -225,8 +207,7 @@ function loadPlayersPage(){
 		var Tag = document.createElement('a');
 		Tag.setAttribute('href',"#");
 		Tag.setAttribute('id', i);
-		let playerid = i;
-		Tag.onclick = function() { switchPlayers(playerid); };
+		Tag.onclick = function() { switchPlayers(1); };
 		Tag.innerHTML = players[i].name;
 		mydiv.appendChild(Tag);
 		var x = document.createElement("BR");
